@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import { Routes, Route } from 'react-router';
+import './App.css';
+import React from 'react'
+import RootLayout from './components/RootLayout';
+import Home from './Pages/Home';
+import AuthRoutes from './components/AuthRoutes';
+import Login from './Pages/Login';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AddProduct from './Pages/AdminPage/AddProduct';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Routes>
+        <Route path='/' element={<RootLayout />}>
+          <Route index element={<Home />} />
+
+
+
+          <Route path='user/login' element={<Login />} />
+          <Route path='addproduct' element={<AddProduct />} />
+
+
+
+
+        </Route>
+      </Routes>
+      <ToastContainer autoClose={1000} position='top-right' />
+    </>
+  )
 }
 
-export default App;
+export default App
+
