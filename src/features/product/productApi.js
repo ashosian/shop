@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { baseUrl } from '../constant';
 
-// const token = "ab88947e3b0c98268ed54d405bb3ad2ea6c5a634";
+const token = "ab88947e3b0c98268ed54d405bb3ad2ea6c5a634";
 
 export const productApi = createApi({
   reducerPath: 'productApi',
@@ -12,11 +12,11 @@ export const productApi = createApi({
   endpoints: (builder) => ({
 
     getAllProducts: builder.query({
-      query: (query) => ({
+      query: (data) => ({
         url: '/api/v1/product',
         method: 'GET',
         headers: {
-          Authorization: query.token
+          Authorization: `token ${data}`,
         }
       }),
       providesTags: ['Product']
@@ -24,7 +24,7 @@ export const productApi = createApi({
 
     addProduct: builder.mutation({
       query: (query) => ({
-        url: '/api/add/product',
+        url: '/api/v1/product',
         body: query.body,
         method: 'POST',
         headers: {

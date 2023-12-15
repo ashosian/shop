@@ -9,7 +9,7 @@ export const store = configureStore({
   reducer: {
     userInfo: userReducer,
     [authApi.reducerPath]: authApi.reducer,
-    [productApi.reducerPath]: authApi.reducer
+    [productApi.reducerPath]: productApi.reducer
 
   },
   middleware: (getDefaultMiddleware) =>

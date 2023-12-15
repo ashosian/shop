@@ -23,6 +23,17 @@ import {
 } from "@heroicons/react/24/outline";
 
 
+const profileMenuItems = [
+  {
+    label: "My Profile",
+    icon: UserCircleIcon,
+  },
+
+  {
+    label: "Sign Out",
+    icon: PowerIcon,
+  },
+];
 
 const adminMenuItems = [
   {
@@ -31,7 +42,7 @@ const adminMenuItems = [
   },
 
   {
-    label: "Product List",
+    label: "Add Product",
     icon: UserCircleIcon,
   },
 
@@ -118,8 +129,8 @@ const Header = () => {
             </MenuHandler>
 
             <MenuList className="p-1">
-              {(userInfo.token !== null ? adminMenuItems : '').map(({ label, icon }, key) => {
-                const isLastItem = key === ''.length - 1;
+              {(userInfo.token !== null ? adminMenuItems : profileMenuItems).map(({ label, icon }, key) => {
+                const isLastItem = key === profileMenuItems.length - 1;
                 return (
                   <MenuItem
                     key={label}
@@ -132,9 +143,9 @@ const Header = () => {
 
                           break;
 
-                        case 'Product List':
+                        case 'Add Product':
 
-                          nav('/products/all');
+                          nav('/addproduct');
                           closeMenu();
                           break;
                         case 'My Profile':
